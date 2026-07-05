@@ -1,9 +1,22 @@
-const header = document.querySelector(".site-header");
-const navToggle = document.querySelector(".nav-toggle");
-const navigation = document.querySelector("#primary-navigation");
-const navLinks = [...document.querySelectorAll(".nav-link")];
+/* Navigation and interactive components initialization */
+document.addEventListener("DOMContentLoaded", initializeComponents, { once: true });
 
-if (header && navToggle && navigation) {
+function initializeComponents() {
+  initializeNavigation();
+  initializeCarousel();
+  initializeAccordion();
+  initializeContactForm();
+  initializeLazyLoading();
+}
+
+function initializeNavigation() {
+  const header = document.querySelector(".site-header");
+  const navToggle = document.querySelector(".nav-toggle");
+  const navigation = document.querySelector("#primary-navigation");
+  const navLinks = [...document.querySelectorAll(".nav-link")];
+
+  if (!header || !navToggle || !navigation) return;
+
   const desktopQuery = window.matchMedia("(min-width: 64rem)");
 
   const setMenuState = (isOpen) => {
@@ -43,9 +56,8 @@ if (header && navToggle && navigation) {
 
   desktopQuery.addEventListener("change", closeMenu);
   setMenuState(false);
-}
 
-if (navLinks.length > 0) {
+  if (navLinks.length > 0) {
   const sections = navLinks
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
@@ -84,14 +96,17 @@ if (navLinks.length > 0) {
   const initialHash = window.location.hash.replace("#", "");
   const initialSection = sections.find((section) => section.id === initialHash) || sections[0];
 
-  if (initialSection) {
-    setActiveLink(initialSection.id);
+    if (initialSection) {
+      setActiveLink(initialSection.id);
+    }
   }
 }
 
-const carousel = document.querySelector("[data-carousel]");
+function initializeCarousel() {
+  const carousel = document.querySelector("[data-carousel]");
 
-if (carousel) {
+  if (!carousel) return;
+
   const slides = [...carousel.querySelectorAll("[data-carousel-slide]")];
   const previousButton = carousel.querySelector("[data-carousel-prev]");
   const nextButton = carousel.querySelector("[data-carousel-next]");
@@ -165,9 +180,11 @@ if (carousel) {
   startRotation();
 }
 
-const accordion = document.querySelector("[data-accordion]");
+function initializeAccordion() {
+  const accordion = document.querySelector("[data-accordion]");
 
-if (accordion) {
+  if (!accordion) return;
+
   const triggers = [...accordion.querySelectorAll("[data-accordion-trigger]")];
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -270,9 +287,11 @@ if (accordion) {
   });
 }
 
-const contactForm = document.querySelector("[data-contact-form]");
+function initializeContactForm() {
+  const contactForm = document.querySelector("[data-contact-form]");
 
-if (contactForm) {
+  if (!contactForm) return;
+
   const successMessage = contactForm.querySelector("[data-form-success]");
   const fields = [...contactForm.querySelectorAll("input, select, textarea")];
 
@@ -379,5 +398,33 @@ if (contactForm) {
       successMessage.textContent =
         "Thank you. Your inquiry has been received and our team will contact you shortly.";
     }
+  });
+}
+
+function initializeLazyLoading() {
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll("img[loading='lazy']").forEach((img) => {
+      img.loading = "eager";
+    });
+    return;
+  }
+
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute("data-src");
+        }
+        observer.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: "50px"
+  });
+
+  document.querySelectorAll("img[data-src]").forEach((img) => {
+    imageObserver.observe(img);
   });
 }
