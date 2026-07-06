@@ -1,7 +1,7 @@
 {
-  "name": "Goodwill and Goodwill Consultant",
-  "short_name": "Goodwill Consultant",
-  "description": "Premium loan advisory and financing solutions",
+  "name": "Goodwill & Goodwill Consultant",
+  "short_name": "Goodwill & Co.",
+  "description": "Field Investigation Services and Loan Verification for banks, NBFCs, and financial institutions across Mumbai.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -10,13 +10,13 @@
   "background_color": "#ffffff",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230b3a67' width='192' height='192'/><text x='50%' y='50%' font-size='80' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>GWC</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230b3a67' width='192' height='192'/><text x='50%' y='50%' font-size='70' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>GGC</text></svg>",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230b3a67' width='512' height='512'/><text x='50%' y='50%' font-size='240' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>GWC</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230b3a67' width='512' height='512'/><text x='50%' y='50%' font-size='210' font-weight='bold' fill='white' text-anchor='middle' dy='.3em'>GGC</text></svg>",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "maskable"
@@ -30,12 +30,12 @@
       "form_factor": "narrow"
     }
   ],
-  "categories": ["finance", "business"],
+  "categories": ["business"],
   "shortcuts": [
     {
-      "name": "Apply for Loan",
-      "short_name": "Apply",
-      "description": "Quickly start your loan application",
+      "name": "Request Verification",
+      "short_name": "Request",
+      "description": "Quickly request a field investigation or verification service",
       "url": "/?utm_source=shortcut#contact",
       "icons": [
         {
@@ -48,7 +48,7 @@
     {
       "name": "Contact Us",
       "short_name": "Contact",
-      "description": "Get in touch with our advisors",
+      "description": "Get in touch with our field verification team",
       "url": "/?utm_source=shortcut#contact",
       "icons": [
         {

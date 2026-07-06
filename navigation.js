@@ -308,8 +308,8 @@ function initializeContactForm() {
       valueMissing: "Enter your email address.",
       typeMismatch: "Enter a valid email address.",
     },
-    "loan-type": {
-      valueMissing: "Select a loan type.",
+    "service-type": {
+      valueMissing: "Select a service type.",
     },
     message: {
       valueMissing: "Enter your message.",
